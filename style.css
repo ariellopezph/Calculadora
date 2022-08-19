@@ -1,0 +1,92 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(0, 0, 0);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculadora {
+    padding: 20px;
+    background-color: #10455C;
+    border-radius: 10px;
+    height: 500px;
+    width: 400px;
+}
+
+.display {
+    background-color: black;
+    height: 95px;
+    border-radius: 3%;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+}
+
+#digital {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(80px, auto);
+    row-gap: 4px;
+    column-gap: 4px;
+    padding-top: 20px;
+    
+    
+}
+
+button {
+    font-size: 25px;
+    font-weight: bold;
+    
+}
+
+.button {
+    background-color: #3E88A8;
+    border: none;
+    
+}
+
+.operator {
+    background-color: #3E88A8;
+    border: none;
+}
+
+.delete {
+    background-color: #B51831;
+    border: none;
+}
+
+
+
+.operator:hover {
+    background-color: #309FCF;
+    cursor: pointer;
+    color: white;
+}
+
+.delete:hover {
+    background-color: #EB7D71;
+    cursor: pointer;
+    color: white;
+}
+
+.button:hover {
+    background-color: #309FCF;
+    cursor: pointer;
+    color: white;
+}
