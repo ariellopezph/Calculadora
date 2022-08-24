@@ -4,40 +4,57 @@ const selectDelete = document.querySelector('.delete');
 const selectResult = document.querySelector('.result');
 
 
-var firtsNumber = 0;
+var firtsNumber = '';
 var secondNumber = '';
-var operator = '';
+var operatorButton = '';
 var empty = '';
-var result = '';
+var resultNumber = '';
+
+
+
 
 selectButton.forEach(button => {
     button.addEventListener('click', () => {
-        if(firtsNumber.inInteger()){
-            addNumber(button.innerHTML);
-            console.log('if: ' + firtsNumber)
-            
+        if(operatorButton == ''){        
+            firtsNumber = firtsNumber + button.innerHTML;
+            firtsNumber = parseFloat(firtsNumber);
+            console.log('primero ' + firtsNumber);
+            display(firtsNumber);
         }
         else {
-            addSecondNumber(button.innerHTML);
-            console.log('else: ' + secondNumber);
+            secondNumber = secondNumber + button.innerHTML;
+            secondNumber = parseFloat(secondNumber);
+            console.log('segundo ' + secondNumber);
+            display(secondNumber);
         }
+        
+        
     });
 });
 
 
 selectDelete.addEventListener('click', () => {
-    deleteAll();
+    firtsNumber = '';
+    secondNumber = '';
+    operatorButton = '';
+    document.getElementById('digital').innerHTML = '';
 })
 
 selectOperator.forEach(button => {
     button.addEventListener('click', () => {
-        addNumber(button.innerHTML);
+        operatorButton = operatorButton + button.innerHTML;
+
+        display(operatorButton);
     });
 });
 
 
 selectResult.addEventListener('click', () => {
-    result();
+    result(operatorButton);
+    display(resultNumber);
+    firtsNumber = '';
+    secondNumber = '';
+    operatorButton = '';
 })
 
 ///////////////////// FUNCTIONS //////////////////////
@@ -48,50 +65,59 @@ function display(x){
     return document.getElementById('digital').innerHTML = x;
 };
 
-function addNumber(b){
-    firtsNumber = firtsNumber + b;
-    display(firtsNumber);
-};
 
-function addSecondNumber(c){
-    secondNumber = secondNumber + c;
-    display(secondNumber);
-};
-
-// Delete button
-
-function deleteAll(){
-    firtsNumber = '';
-    secondNumber = '';
-    document.getElementById('digital').innerHTML = empty;
-}
 
 // Result button
 
-function result(){
-    add(firtsNumber,secondNumber);
-    firtsNumber = '';
-    secondNumber = '';
-    document.getElementById('digital').innerHTML = result;
+function result(operating){
+    
+    if(secondNumber === 0){
+        document.getElementById('digital').innerHTML = 'No es posible';
+        firtsNumber = '';
+        secondNumber = '';
+        operatorButton = '';
+        console.log('No es posible');
+    }
+    
+    else if(operating === '+'){
+        console.log('chau');
+        add(firtsNumber, secondNumber);
+    }
+
+    else if (operating === '-'){
+        subtract(firtsNumber, secondNumber);
+    }
+
+    else if (operating === '/'){
+        divide(firtsNumber, secondNumber);
+    }
+    
+    else if (operating === 'x'){
+        multiply(firtsNumber, secondNumber);
+    }
+
+        
+    
 }
 
 // Math operator 
 
-function add(a, b){
-    return result = a + b;
-};
+    function add(a, b){
+        return resultNumber = a + b;
+    };
 
-function multiply(a, b){
-    return result = a * b;
-};
+    function multiply(a, b){
+        return resultNumber = a * b;
+    };
 
-function divide(a, b){
-    return result = a / b;
-};
+    function divide(a, b){
+        return resultNumber = a / b;
+    };
 
-function subtract(a, b){
-    return result = a - b;
-};
+    function subtract(a, b){
+        return resultNumber = a - b;
+    };
+
 
 
 
